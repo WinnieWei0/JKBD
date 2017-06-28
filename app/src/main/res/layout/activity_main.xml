@@ -44,7 +44,7 @@
             android:background="@null"
             android:drawableTop="@mipmap/main_menu_message"
             android:text="设置" />
-
+<!--按键-->
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
