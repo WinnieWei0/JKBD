@@ -14,7 +14,7 @@ public class splashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
         mdownTimer.start();
     }
     CountDownTimer mdownTimer=new CountDownTimer(2000,1000){
