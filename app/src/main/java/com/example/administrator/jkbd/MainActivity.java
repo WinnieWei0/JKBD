@@ -1,12 +1,12 @@
 package com.example.administrator.jkbd;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import com.example.administrator.jkbd.bean.ExamInfo;
 import com.example.administrator.jkbd.utils.OkHttpUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,9 +20,10 @@ public class MainActivity extends AppCompatActivity {
         OkHttpUtils<ExamInfo> utils=new OkHttpUtils<>(getApplicationContext());
         String uri="http://101.251.196.90:8080/JztkServer/examInfo";
         utils.url(uri).targetClass(ExamInfo.class).execute(new OkHttpUtils.OnCompleteListener<ExamInfo>(){
+            Log log;
             @Override
             public void onSuccess(ExamInfo result) {
-log.e("main","result="+result);
+                log.e("main","result="+result);
             }
 
             @Override
