@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.example.administrator.jkbd.bean.ExamInfo;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -64,6 +65,8 @@ public class OkHttpUtils<T> {
     RequestBody mFileBody;
     FormBody.Builder mFormBodyBuilder;
     MultipartBody.Builder mMultipartBodyBuilder;
+
+
 
     public interface OnCompleteListener<T> {
         void onSuccess(T result);
@@ -241,10 +244,10 @@ public class OkHttpUtils<T> {
 
     /**
      * 设置json解析的目标类对象
-     * @param clazz:解析的类对象
+     * @param clazz :解析的类对象
      * @return
      */
-    public OkHttpUtils<T> targetClass(Class<T> clazz) {
+    public OkHttpUtils<T> targetClass(Class<ExamInfo> clazz) {
         mClazz = clazz;
         return this;
     }

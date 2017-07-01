@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
+        <TextView android:id="@+id/tvExamInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="@string/exam_name"
@@ -38,12 +38,14 @@
             android:text="1、"
             android:textColor="#000"/>
         <TextView
+            android:id="@+id/tv_examTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="这个标志是何含义？"
             android:textColor="#000"/>
     </LinearLayout>
     <ImageView
+        android:id="@+id/im_examImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:src="@mipmap/top1"/>
@@ -58,6 +60,7 @@
             android:text="A、"
             android:textColor="#000"/>
         <TextView
+            android:id="@+id/tv_op1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="右转车道"
@@ -74,6 +77,7 @@
             android:textColor="#000"
             android:text="B、"/>
         <TextView
+            android:id="@+id/tv_op2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
@@ -90,6 +94,7 @@
             android:textColor="#000"
             android:text="C、"/>
         <TextView
+            android:id="@+id/tv_op3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
@@ -106,6 +111,7 @@
             android:layout_height="wrap_content"
             android:text="D、"/>
         <TextView
+            android:id="@+id/tv_op4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
