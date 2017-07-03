@@ -33,45 +33,9 @@ public static ExamApplication getInstance(){
         new Thread(new Runnable() {
             @Override
             public void run() {
-        OkHttpUtils<ExamInfo> utils=new OkHttpUtils<>(instance);
-        String url1="http://101.251.196.90:8080/JztkServer/examInfo";
-        utils.url(url1).targetClass(ExamInfo.class).execute(new OkHttpUtils.OnCompleteListener<ExamInfo>(){
-            Log log;
-            @Override
-            public void onSuccess(ExamInfo result) {
-                log.e("main","result="+result);
-            }
 
-            @Override
-            public void onError(String error) {
-                log.e("main","error="+error);
-            }
-        });
 
-                OkHttpUtils<String> utils1=new OkHttpUtils<>(instance);
-                String url2="http://101.251.196.90:8080/JztkServer/getQuestions?testType=rand";
-                utils1.url(url2);
-                utils1.targetClass(String.class);
-                utils1.execute(new OkHttpUtils.OnCompleteListener<String>() {
-                    Log log;
 
-                    @Override
-                    public void onSuccess(String jsonStr) {
-                        Result result=ResultUtils.getListResultxFromJson(jsonStr);
-                        if(result!=null&&result.getError_code()==0)
-                        {
-                            List<Exam> list = result.getResult();
-                            if(list!=null&&list.size()>0){
-                                mExamList=list;
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(String error) {
-                        log.e("main", "error=" + error);
-                    }
-                });
             }
 }).start();
     }
