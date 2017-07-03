@@ -98,10 +98,7 @@ public class ExamActivity extends AppCompatActivity {
                 if (examInfo != null) {
                     showData(examInfo);
                 }
-                List<Exam> examList = ExamApplication.getInstance().getmExamList();
-                if (examList != null) {
-                    showExam(examList);
-                }
+                showExam(biz.getExam());
             }else {
 layoutLoading.setEnabled(true);
                 dialog.setVisibility(View.GONE);
@@ -110,8 +107,8 @@ tv_load.setText("下载失败，点击重新下载");
         }
     }
 
-    private void showExam(List<Exam> examList) {
-        Exam exam = examList.get(0);
+    private void showExam(Exam exam) {
+        Log.e("showExam","showExam,exam="+exam);
         if(exam!=null){
             tv_examTitle.setText(exam.getQuestion());
             tv_op1.setText(exam.getItem1());
@@ -134,6 +131,14 @@ tvExamInfo.setText(examInfo.toString());
         if (mloadQuestionBroadcast!=null){
             unregisterReceiver(mloadQuestionBroadcast);
         }
+    }
+
+    public void nextExam(View view) {
+        showExam(biz.nextQuestion());
+    }
+
+    public void preExam(View view) {
+        showExam(biz.preQuestion());
     }
 
     class loadExamBraodcast extends BroadcastReceiver{

@@ -171,6 +171,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="上一题"
+            android:onClick="preExam"
             android:drawableLeft="@mipmap/exam_pre32x32"
             android:background="@null"
             android:layout_alignParentLeft="true"
@@ -183,6 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@null"
+            android:onClick="nextExam"
             android:drawableLeft="@mipmap/exam_next32x32"
             android:layout_alignParentRight="true"
             android:text="下一题" />
