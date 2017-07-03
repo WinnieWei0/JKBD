@@ -29,7 +29,7 @@ import java.util.List;
  */
 
 public class ExamActivity extends AppCompatActivity {
-    TextView tvExamInfo,tv_examTitle,tv_op1,tv_op2,tv_op3,tv_op4,tv_load;
+    TextView tvExamInfo,tv_examTitle,tv_op1,tv_op2,tv_op3,tv_op4,tv_load,tv_no;
     ImageView mimageView;
     LinearLayout layoutLoading;
     IExambiz biz;
@@ -80,6 +80,7 @@ public class ExamActivity extends AppCompatActivity {
         tv_op3= (TextView) findViewById(R.id.tv_op3);
         tv_op4= (TextView) findViewById(R.id.tv_op4);
         tv_load=(TextView) findViewById(R.id.tv_load);
+        tv_no=(TextView) findViewById(R.id.tv_no);
         mimageView= (ImageView) findViewById(R.id.im_examImage);
         dialog=(ProgressBar)findViewById(R.id.dialog);
         layoutLoading.setOnClickListener(new View.OnClickListener() {
@@ -110,12 +111,17 @@ tv_load.setText("下载失败，点击重新下载");
     private void showExam(Exam exam) {
         Log.e("showExam","showExam,exam="+exam);
         if(exam!=null){
+            tv_no.setText(biz.getExamIndex());
             tv_examTitle.setText(exam.getQuestion());
             tv_op1.setText(exam.getItem1());
             tv_op2.setText(exam.getItem2());
             tv_op3.setText(exam.getItem3());
             tv_op4.setText(exam.getItem4());
-            Picasso.with(ExamActivity.this).load(exam.getUrl()).into(mimageView);
+            if(exam.getUrl()!=null&&!exam.getUrl().equals("")) {
+                Picasso.with(ExamActivity.this).load(exam.getUrl()).into(mimageView);
+            }else{
+                mimageView.setVisibility(View.GONE);
+            }
         }
     }
     private void showData(ExamInfo examInfo) {

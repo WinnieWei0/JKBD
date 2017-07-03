@@ -54,4 +54,9 @@ dao.loadExamInfo();
     public void commitExam() {
 
     }
+
+    @Override
+    public String getExamIndex() {
+        return (examIndex+1)+".";
+    }
 }
