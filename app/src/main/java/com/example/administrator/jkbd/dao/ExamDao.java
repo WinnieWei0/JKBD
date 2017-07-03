@@ -1,5 +1,6 @@
 package com.example.administrator.jkbd.dao;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.example.administrator.jkbd.ExamApplication;
@@ -26,11 +27,15 @@ public class ExamDao implements IExamdao {
             public void onSuccess(ExamInfo result) {
                 log.e("main","result="+result);
                 ExamApplication.getInstance().setmExamInfo(result);
+                ExamApplication.getInstance().sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_INFO)
+                        .putExtra(ExamApplication.LOAD_EXAM_SUCCESS,true));
             }
 
             @Override
             public void onError(String error) {
                 log.e("main","error="+error);
+                ExamApplication.getInstance().sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_INFO)
+                        .putExtra(ExamApplication.LOAD_EXAM_SUCCESS,false));
             }
         });
     }
@@ -46,19 +51,25 @@ public class ExamDao implements IExamdao {
 
             @Override
             public void onSuccess(String jsonStr) {
+                boolean success=false;
                 Result result= ResultUtils.getListResultxFromJson(jsonStr);
                 if(result!=null&&result.getError_code()==0)
                 {
                     List<Exam> list = result.getResult();
                     if(list!=null&&list.size()>0){
                         ExamApplication.getInstance().setmExamList(list);
-                    }
+                        success=true;
+                        }
                 }
+                ExamApplication.getInstance().sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_QUESTION)
+                        .putExtra(ExamApplication.LOAD_EXAM_SUCCESS,success));
             }
 
             @Override
             public void onError(String error) {
                 log.e("main", "error=" + error);
+                ExamApplication.getInstance().sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_QUESTION)
+                        .putExtra(ExamApplication.LOAD_EXAM_SUCCESS,false));
             }
         });
     }

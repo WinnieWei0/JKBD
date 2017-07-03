@@ -10,7 +10,10 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.administrator.jkbd.bean.Exam;
@@ -26,14 +29,19 @@ import java.util.List;
  */
 
 public class ExamActivity extends AppCompatActivity {
-    TextView tvExamInfo,tv_examTitle,tv_op1,tv_op2,tv_op3,tv_op4;
+    TextView tvExamInfo,tv_examTitle,tv_op1,tv_op2,tv_op3,tv_op4,tv_load;
     ImageView mimageView;
+    LinearLayout layoutLoading;
     IExambiz biz;
-    boolean isExamInfo=false;
+    ProgressBar dialog;
+    boolean isLoadExamInfo=false;
     boolean isLoadQuestion=false;
+    boolean isLoadExamInfoRecetver=false;
+    boolean isLoadQuestionRecetver=false;
 
     loadExamBraodcast mloadExamBraodcast;
     loadQuestionBroadcast mloadQuestionBroadcast;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -43,6 +51,7 @@ public class ExamActivity extends AppCompatActivity {
         setListener();
         initView();
         loadData();
+        biz=new ExamBiz();
     }
 
     private void setListener() {
@@ -51,7 +60,9 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        biz=new ExamBiz();
+        layoutLoading.setEnabled(false);
+        dialog.setVisibility(View.VISIBLE);
+        tv_load.setText("下载数据...");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -61,24 +72,40 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        layoutLoading= (LinearLayout) findViewById(R.id.layout_loading);
         tvExamInfo= (TextView) findViewById(R.id.tvExamInfo);
         tv_examTitle= (TextView) findViewById(R.id.tv_examTitle);
         tv_op1= (TextView) findViewById(R.id.tv_op1);
         tv_op2= (TextView) findViewById(R.id.tv_op2);
         tv_op3= (TextView) findViewById(R.id.tv_op3);
         tv_op4= (TextView) findViewById(R.id.tv_op4);
+        tv_load=(TextView) findViewById(R.id.tv_load);
         mimageView= (ImageView) findViewById(R.id.im_examImage);
+        dialog=(ProgressBar)findViewById(R.id.dialog);
+        layoutLoading.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadData();
+            }
+        });
     }
 
     private void initData() {
-        if (isLoadQuestion && isExamInfo) {
-            ExamInfo examInfo = ExamApplication.getInstance().getmExamInfo();
-            if (examInfo != null) {
-                showData(examInfo);
-            }
-            List<Exam> examList = ExamApplication.getInstance().getmExamList();
-            if (examList != null) {
-                showExam(examList);
+        if (isLoadExamInfoRecetver && isLoadQuestionRecetver) {
+            if (isLoadQuestion && isLoadExamInfo) {
+                layoutLoading.setVisibility(View.GONE);
+                ExamInfo examInfo = ExamApplication.getInstance().getmExamInfo();
+                if (examInfo != null) {
+                    showData(examInfo);
+                }
+                List<Exam> examList = ExamApplication.getInstance().getmExamList();
+                if (examList != null) {
+                    showExam(examList);
+                }
+            }else {
+layoutLoading.setEnabled(true);
+                dialog.setVisibility(View.GONE);
+tv_load.setText("下载失败，点击重新下载");
             }
         }
     }
@@ -116,8 +143,9 @@ tvExamInfo.setText(examInfo.toString());
             boolean isSuccess = intent.getBooleanExtra(ExamApplication.LOAD_EXAM_SUCCESS, false);
             Log.e("loadExamBroadcast","loadExamBroadcast,isSuccess="+isSuccess);
             if(isSuccess){
-                isExamInfo=true;
+                isLoadExamInfo=true;
             }
+            isLoadExamInfoRecetver=true;
             initData();
         }
     }
@@ -131,6 +159,7 @@ tvExamInfo.setText(examInfo.toString());
             if(isSuccess){
                 isLoadQuestion=true;
             }
+            isLoadQuestionRecetver=true;
             initData();
         }
     }

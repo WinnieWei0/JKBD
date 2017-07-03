@@ -6,6 +6,8 @@ import android.util.Log;
 import com.example.administrator.jkbd.bean.Exam;
 import com.example.administrator.jkbd.bean.ExamInfo;
 import com.example.administrator.jkbd.bean.Result;
+import com.example.administrator.jkbd.biz.ExamBiz;
+import com.example.administrator.jkbd.biz.IExambiz;
 import com.example.administrator.jkbd.utils.OkHttpUtils;
 import com.example.administrator.jkbd.utils.ResultUtils;
 
@@ -16,6 +18,9 @@ import java.util.List;
  */
 
 public class ExamApplication extends Application {
+    public static String LOAD_EXAM_INFO="load_exam_info";
+    public static String LOAD_EXAM_QUESTION="load_exam_question";
+    public static String LOAD_EXAM_SUCCESS="load_exam_success";
     ExamInfo mExamInfo;
     List<Exam> mExamList;
     private static ExamApplication instance;
@@ -23,22 +28,10 @@ public class ExamApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance=this;
-
-        initData();
     }
 public static ExamApplication getInstance(){
     return instance;
 }
-    private void initData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-
-
-            }
-}).start();
-    }
 
     public void setmExamInfo(ExamInfo mExamInfo) {
         this.mExamInfo = mExamInfo;
@@ -55,4 +48,6 @@ public static ExamApplication getInstance(){
     public List<Exam> getmExamList() {
         return mExamList;
     }
+
+
 }
