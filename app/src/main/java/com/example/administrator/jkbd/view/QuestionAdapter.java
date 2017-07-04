@@ -41,10 +41,10 @@ public class QuestionAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view=View.inflate(mContext, R.layout.item_question,null);
-        TextView tv_num = (TextView)view.findViewById(R.id.tv_num);
-        ImageView ivQuestion=(ImageView)view.findViewById(R.id.iv_question);
+        View viewr=View.inflate(mContext, R.layout.item_question,null);
+        TextView tv_num = (TextView)viewr.findViewById(R.id.tv_num);
+        ImageView ivQuestion=(ImageView)viewr.findViewById(R.id.iv_question);
         tv_num.setText("第"+(position+1)+"题");
-        return view;
+        return viewr;
     }
 }
