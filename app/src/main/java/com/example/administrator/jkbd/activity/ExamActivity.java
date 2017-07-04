@@ -1,5 +1,6 @@
-package com.example.administrator.jkbd.activity;
+package com.example.administrator.jkbd;
 
+import android.animation.AnimatorSet;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -24,9 +24,9 @@ import com.example.administrator.jkbd.bean.Exam;
 import com.example.administrator.jkbd.bean.ExamInfo;
 import com.example.administrator.jkbd.biz.ExamBiz;
 import com.example.administrator.jkbd.biz.IExambiz;
-import com.example.administrator.jkbd.view.QuestionAdapter;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,8 +41,6 @@ public class ExamActivity extends AppCompatActivity {
     CheckBox[] cbs=new CheckBox[4];
     LinearLayout layoutLoading,layout_03,layout_04;
     IExambiz biz;
-    Gallery mgallery;
-    QuestionAdapter mAdapter;
     ProgressBar dialog;
     boolean isLoadExamInfo=false;
     boolean isLoadQuestion=false;
@@ -97,7 +95,6 @@ public class ExamActivity extends AppCompatActivity {
         cb_02= (CheckBox) findViewById(R.id.cb_02);
         cb_03= (CheckBox) findViewById(R.id.cb_03);
         cb_04= (CheckBox) findViewById(R.id.cb_04);
-        mgallery= (Gallery) findViewById(R.id.gallery);
         cbs[0]=cb_01;
         cbs[2]=cb_02;
         cbs[3]=cb_03;
@@ -155,7 +152,6 @@ public class ExamActivity extends AppCompatActivity {
                     showData(examInfo);
                     initTime(examInfo);
                 }
-                initGallery();
                 showExam(biz.getExam());
             }else {
 layoutLoading.setEnabled(true);
@@ -163,11 +159,6 @@ layoutLoading.setEnabled(true);
 tv_load.setText("下载失败，点击重新下载");
             }
         }
-    }
-
-    private void initGallery() {
-        mAdapter=new QuestionAdapter(this);
-        mgallery.setAdapter(mAdapter);
     }
 
     private void initTime(ExamInfo examInfo) {
