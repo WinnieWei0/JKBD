@@ -27,13 +27,15 @@ import com.example.administrator.jkbd.biz.IExambiz;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Administrator on 2017/6/29.
  */
 
 public class ExamActivity extends AppCompatActivity {
-    TextView tvExamInfo,tv_examTitle,tv_op1,tv_op2,tv_op3,tv_op4,tv_load,tv_no;
+    TextView tvExamInfo,tv_examTitle,tv_op1,tv_op2,tv_op3,tv_op4,tv_load,tv_no,tv_time;
     ImageView mimageView;
     CheckBox cb_01,cb_02,cb_03,cb_04;
     CheckBox[] cbs=new CheckBox[4];
@@ -51,7 +53,7 @@ public class ExamActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-        setContentView(layout.exam);
+        setContentView(R.layout.exam);
         mloadExamBraodcast=new loadExamBraodcast();
         mloadQuestionBroadcast=new loadQuestionBroadcast();
         setListener();
@@ -148,6 +150,7 @@ public class ExamActivity extends AppCompatActivity {
                 ExamInfo examInfo = ExamApplication.getInstance().getmExamInfo();
                 if (examInfo != null) {
                     showData(examInfo);
+                    initTime(examInfo);
                 }
                 showExam(biz.getExam());
             }else {
@@ -156,6 +159,38 @@ layoutLoading.setEnabled(true);
 tv_load.setText("下载失败，点击重新下载");
             }
         }
+    }
+
+    private void initTime(ExamInfo examInfo) {
+        int sumTime=examInfo.getLimitTime()*60*1000;
+        final long overTime= (int) (sumTime+System.currentTimeMillis());
+        final Timer timer=new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                long l = overTime - System.currentTimeMillis();
+                final int min= (int) (l/1000/60);
+                final int sec= (int) (l/1000%60);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tv_time.setText("剩余时间："+min+"分"+sec+"秒");
+                    }
+                });
+            }
+        },0,1000);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                timer.cancel();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commxit(null);
+                    }
+                });
+            }
+        },sumTime);
     }
 
     private void showExam(Exam exam) {
@@ -167,6 +202,7 @@ tv_load.setText("下载失败，点击重新下载");
             tv_op2.setText(exam.getItem2());
             tv_op3.setText(exam.getItem3());
             tv_op4.setText(exam.getItem4());
+            tv_time= (TextView) findViewById(R.id.tv_time);
             if(exam.getUrl()!=null&&!exam.getUrl().equals("")) {
                 Picasso.with(ExamActivity.this).load(exam.getUrl()).into(mimageView);
             }else{
