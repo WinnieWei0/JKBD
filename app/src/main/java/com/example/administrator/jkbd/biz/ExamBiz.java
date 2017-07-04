@@ -51,8 +51,17 @@ dao.loadExamInfo();
     }
 
     @Override
-    public void commitExam() {
-
+    public int commitExam() {
+int sum=0;
+        for (Exam exam : examList) {
+            String userAnswer = exam.getUserAnswer();
+            if(userAnswer!=null&&!userAnswer.equals("")){
+                if(exam.getAnswer().equals(userAnswer)){
+                    sum++;
+                }
+            }
+        }
+        return sum;
     }
 
     @Override

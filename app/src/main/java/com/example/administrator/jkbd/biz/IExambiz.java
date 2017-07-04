@@ -11,6 +11,6 @@ public interface IExambiz {
     Exam getExam();
     Exam nextQuestion();
     Exam preQuestion();
-    void commitExam();
+    int commitExam();
     String getExamIndex();
 }

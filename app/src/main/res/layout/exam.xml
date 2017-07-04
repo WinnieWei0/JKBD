@@ -105,6 +105,7 @@
             tools:text="掉头车道"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layout_03"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
@@ -122,6 +123,7 @@
             tools:text="左转车道"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layout_04"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -145,21 +147,25 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp">
         <CheckBox
+            android:id="@+id/cb_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
             android:text="A"/>
         <CheckBox
+            android:id="@+id/cb_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
             android:text="B"/>
         <CheckBox
+            android:id="@+id/cb_03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
             android:text="C"/>
         <CheckBox
+            android:id="@+id/cb_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
@@ -198,6 +204,7 @@
             android:layout_below="@id/button2"
             android:drawableLeft="@mipmap/exam_commit32x32"
             android:layout_alignParentRight="true"
-            android:text="交卷" />
+            android:text="交卷"
+            android:onClick="commit"/>
     </RelativeLayout>
 </LinearLayout>
