@@ -1,4 +1,4 @@
-package com.example.administrator.jkbd;
+package com.example.administrator.jkbd.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <ProgressBar
@@ -31,9 +32,10 @@
         android:src="@mipmap/exam_title"
         android:layout_margin="10dp"/>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:weightSum="1">
         <TextView android:id="@+id/tvExamInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +43,16 @@
             android:textSize="18dp"
             android:textColor="#00000f"
             android:layout_marginLeft="15dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="剩余时间：9分09秒"
+            android:textColor="#000"
+            android:textSize="16sp"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -73,7 +84,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
@@ -171,6 +181,11 @@
             android:layout_marginRight="40dp"
             android:text="D"/>
     </LinearLayout>
+    <Gallery
+        android:id="@+id/gallery"
+        android:spacing="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></Gallery>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -189,7 +204,6 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:background="@null"
             android:onClick="nextExam"
             android:drawableLeft="@mipmap/exam_next32x32"

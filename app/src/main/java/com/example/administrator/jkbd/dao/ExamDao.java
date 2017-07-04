@@ -3,7 +3,7 @@ package com.example.administrator.jkbd.dao;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.administrator.jkbd.ExamApplication;
+import com.example.administrator.jkbd.activity.ExamApplication;
 import com.example.administrator.jkbd.bean.Exam;
 import com.example.administrator.jkbd.bean.ExamInfo;
 import com.example.administrator.jkbd.bean.Result;

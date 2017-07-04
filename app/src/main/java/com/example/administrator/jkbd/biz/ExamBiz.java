@@ -1,6 +1,6 @@
 package com.example.administrator.jkbd.biz;
 
-import com.example.administrator.jkbd.ExamApplication;
+import com.example.administrator.jkbd.activity.ExamApplication;
 import com.example.administrator.jkbd.bean.Exam;
 import com.example.administrator.jkbd.dao.ExamDao;
 import com.example.administrator.jkbd.dao.IExamdao;

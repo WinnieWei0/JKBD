@@ -1,15 +1,9 @@
-package com.example.administrator.jkbd;
+package com.example.administrator.jkbd.activity;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.example.administrator.jkbd.bean.Exam;
 import com.example.administrator.jkbd.bean.ExamInfo;
-import com.example.administrator.jkbd.bean.Result;
-import com.example.administrator.jkbd.biz.ExamBiz;
-import com.example.administrator.jkbd.biz.IExambiz;
-import com.example.administrator.jkbd.utils.OkHttpUtils;
-import com.example.administrator.jkbd.utils.ResultUtils;
 
 import java.util.List;
 
