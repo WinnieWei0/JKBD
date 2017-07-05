@@ -237,9 +237,13 @@ for(CheckBox cb:cbs){
         for (int i = 0; i < cbs.length; i++) {
             if(cbs[i].isChecked()){
                 biz.getExam().setUserAnswer(String.valueOf(i+1));
+                mAdapter.notifyDataSetChanged();
                 return;
             }
         }
+        Log.e("save","saveUserAnswer,biz.getExam()="+biz.getExam());
+        biz.getExam().setUserAnswer("");
+        mAdapter.notifyDataSetChanged();
     }
     private void showData(ExamInfo examInfo) {
 tvExamInfo.setText(examInfo.toString());

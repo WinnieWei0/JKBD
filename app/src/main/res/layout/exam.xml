@@ -59,147 +59,202 @@
         android:layout_height="1dp"
         android:background="#000"
         ></View>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-        <TextView
-            android:id="@+id/tv_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1、"
-            android:textColor="#000"/>
-        <TextView
-            android:id="@+id/tv_examTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="这个标志是何含义？"
-            android:textColor="#000"/>
-    </LinearLayout>
-    <ImageView
-        android:id="@+id/im_examImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:src="@mipmap/top1"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="A、"
-            android:textColor="#000"/>
-        <TextView
-            android:id="@+id/tv_op1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="右转车道"
-            android:textColor="#000"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="B、"/>
-        <TextView
-            android:id="@+id/tv_op2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            tools:text="掉头车道"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout_03"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="C、"/>
-        <TextView
-            android:id="@+id/tv_op3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            tools:text="左转车道"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/layout_04"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:textColor="#000"
-            android:layout_height="wrap_content"
-            android:text="D、"/>
-        <TextView
-            android:id="@+id/tv_op4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            tools:text="直行车道"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp">
-        <CheckBox
-            android:id="@+id/cb_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:text="A"/>
-        <CheckBox
-            android:id="@+id/cb_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:text="B"/>
-        <CheckBox
-            android:id="@+id/cb_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:text="C"/>
-        <CheckBox
-            android:id="@+id/cb_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:text="D"/>
-    </LinearLayout>
-    <Gallery
-        android:id="@+id/gallery"
-        android:spacing="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"></Gallery>
-    <RelativeLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@null"
-            android:layout_below="@id/button2"
-            android:drawableLeft="@mipmap/exam_commit32x32"
-            android:layout_alignParentRight="true"
-            android:text="交卷"
-            android:onClick="commit"/>
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/tv_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1、"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/tv_examTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    tools:text="这个标志是何含义？" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/im_examImage"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                tools:src="@mipmap/top1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A、"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/tv_op1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    tools:text="右转车道" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="B、"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/tv_op2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    tools:text="掉头车道" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_03"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C、"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/tv_op3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    tools:text="左转车道" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_04"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D、"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/tv_op4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    tools:text="直行车道" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:text="A" />
+
+                <CheckBox
+                    android:id="@+id/cb_02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:text="B" />
+
+                <CheckBox
+                    android:id="@+id/cb_03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:text="C" />
+
+                <CheckBox
+                    android:id="@+id/cb_04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:text="D" />
+            </LinearLayout>
+
+            <Gallery
+                android:id="@+id/gallery"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:spacing="10dp"></Gallery>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/exam_pre32x32"
+                    android:onClick="preExam"
+                    android:text="上一题" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/exam_next32x32"
+                    android:onClick="nextExam"
+                    android:text="下一题" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/button2"
+                    android:layout_marginBottom="20dp"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/exam_commit32x32"
+                    android:onClick="commit"
+                    android:text="交卷" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
