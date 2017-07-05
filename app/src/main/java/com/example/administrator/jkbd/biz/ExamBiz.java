@@ -36,6 +36,17 @@ dao.loadExamInfo();
     }
 
     @Override
+    public Exam getExam(int index) {
+        examList=ExamApplication.getInstance().getmExamList();
+        examIndex=index;
+        if(examList!=null) {
+            return examList.get(examIndex);
+        }else {
+            return null;
+        }
+    }
+
+    @Override
     public Exam nextQuestion() {
         if(examList!=null&&examIndex<examList.size()-1) {
             examIndex++;

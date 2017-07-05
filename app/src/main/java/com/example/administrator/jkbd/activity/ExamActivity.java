@@ -13,17 +13,22 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.administrator.jkbd.activity.ExamApplication;
+import com.example.administrator.jkbd.activity.QuestinAdapter;
 import com.example.administrator.jkbd.bean.Exam;
 import com.example.administrator.jkbd.bean.ExamInfo;
 import com.example.administrator.jkbd.biz.ExamBiz;
 import com.example.administrator.jkbd.biz.IExambiz;
+import com.example.administrator.jkbd.view.QuestionAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -39,6 +44,8 @@ public class ExamActivity extends AppCompatActivity {
     ImageView mimageView;
     CheckBox cb_01,cb_02,cb_03,cb_04;
     CheckBox[] cbs=new CheckBox[4];
+    QuestionAdapter mAdapter;
+    Gallery mGallery;
     LinearLayout layoutLoading,layout_03,layout_04;
     IExambiz biz;
     ProgressBar dialog;
@@ -58,6 +65,7 @@ public class ExamActivity extends AppCompatActivity {
         mloadQuestionBroadcast=new loadQuestionBroadcast();
         setListener();
         initView();
+        initGallery();
         loadData();
         biz=new ExamBiz();
     }
@@ -246,6 +254,19 @@ tvExamInfo.setText(examInfo.toString());
         if (mloadQuestionBroadcast!=null){
             unregisterReceiver(mloadQuestionBroadcast);
         }
+    }
+    public void initGallery(){
+        mAdapter=new QuestinAdapter(this);
+        mGallery.setAdapter(mAdapter);
+        mGallery.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("gallery","gallery item position="+position);
+                saveUserAnswer();
+                showExam(biz.getExam(position));
+            }
+        });
     }
 
     public void nextExam(View view) {

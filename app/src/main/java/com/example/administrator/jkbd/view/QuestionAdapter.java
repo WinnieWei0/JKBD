@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.jkbd.R;
 import com.example.administrator.jkbd.activity.ExamApplication;
 import com.example.administrator.jkbd.bean.Exam;
 
