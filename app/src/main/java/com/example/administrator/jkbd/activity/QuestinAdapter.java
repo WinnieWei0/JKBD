@@ -16,7 +16,7 @@ import com.example.administrator.jkbd.view.QuestionAdapter;
 
 public class QuestinAdapter extends QuestionAdapter {
     public QuestinAdapter(ExamActivity examActivity) {
-        super();
+        super(2);
     }
     public View getView(int position, View convertView, ViewGroup parent){
         View view= View.inflate(mContext, R.layout.item_question,null);
